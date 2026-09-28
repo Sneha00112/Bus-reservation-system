@@ -1,3 +1,6 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,11 +10,12 @@ public class DBConnection {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 
-    public Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.err.println("JDBC Driver not found: " + e.getMessage());
+        }
+        catch (ClassNotFoundException classNotFoundException) {
+            System.err.println("JDBC Driver not found: " + classNotFoundException.getMessage());
         }
         return DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
     }
